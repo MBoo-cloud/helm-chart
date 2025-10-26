@@ -30,31 +30,3 @@ resources:
 
 env:
   NODE_ENV: production
-
-securityContext:
-  runAsUser: 10001
-  runAsGroup: 10001
-  fsGroup: 10001
-  readOnlyRootFilesystem: true
-  writableDirs:
-    - /tmp
-
-# Optional: health probe
-livenessProbe:
-  httpGet:
-    path: /
-    port: 3000
-  initialDelaySeconds: 10
-  periodSeconds: 30
-  timeoutSeconds: 2
-  failureThreshold: 3
-
-readinessProbe:
-  httpGet:
-    path: /
-    port: 3000
-  initialDelaySeconds: 5
-  periodSeconds: 15
-  timeoutSeconds: 2
-  failureThreshold: 3
-

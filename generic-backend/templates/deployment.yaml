@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "generic-backend.fullname" . }}
-  labels: {{ include "generic-backend.labels" . | nindent 4 }}
+  labels:
+    {{ include "generic-backend.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -15,22 +16,17 @@ spec:
         app.kubernetes.io/name: {{ include "generic-backend.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      securityContext:
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-        runAsGroup: {{ .Values.securityContext.runAsGroup }}
-        fsGroup: {{ .Values.securityContext.fsGroup }}
       containers:
         - name: {{ include "generic-backend.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{-- iterate over .Values.env map -}}
-            {{- range $key, $value := .Values.env }}
+{{- range $key, $value := .Values.env }}
             - name: {{ $key }}
               value: "{{ $value }}"
-            {{- end }}
+{{- end }}
           ports:
-          - containerPort: {{ .Values.service.targetPort }}
+            - containerPort: {{ .Values.service.targetPort }}
           resources:
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
@@ -38,6 +34,7 @@ spec:
             requests:
               cpu: {{ .Values.resources.requests.cpu }}
               memory: {{ .Values.resources.requests.memory }}
-          livenessProbe: {{ toYaml .Values.livenessProbe | indent 12 }}
-          readinessProbe: {{ toYaml .Values.readinessProbe | indent 12 }}
-
+          livenessProbe:
+{{ toYaml .Values.livenessProbe | indent 12 }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe | indent 12 }}

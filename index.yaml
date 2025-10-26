@@ -3,12 +3,22 @@ entries:
   generic-backend:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-26T10:49:57.559908491+07:00"
+    created: "2025-10-26T11:30:37.00797831+07:00"
     description: A generic backend service chart
-    digest: 1c4b073d79298679d28633eadf040e9404b63f8fef8f697a61a050b8433eaf71
+    digest: 631c757e5682ea60ce005fed01bac66850a180642f5ab2103d620c513212a3af
     name: generic-backend
     type: application
     urls:
-    - generic-backend-0.1.0.tgz
+    - https://MBoo-cloud.github.io/helm-chart/generic-backend-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-10-26T11:30:37.007496618+07:00"
+    description: A generic backend service chart
+    digest: c0426ea551a74cb801b86bd0975e0bbbe73c7ca62bfbb5adf41064f0f974cfd4
+    name: generic-backend
+    type: application
+    urls:
+    - https://MBoo-cloud.github.io/helm-chart/generic-backend-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-26T10:49:57.559411673+07:00"
+generated: "2025-10-26T11:30:37.006994822+07:00"
